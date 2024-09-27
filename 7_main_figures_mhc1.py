@@ -613,9 +613,6 @@ df_counts_carriers_binding['n_all_binding'] = pd.to_numeric(df_counts_carriers_b
 df_counts_carriers_binding['n_all_nonbinding'] = pd.to_numeric(df_counts_carriers_binding['n_all_nonbinding'])
 
 # ERROR BARS
-# the idea is that we have a binomial process so the variance is n * p * (1-p) where n = nr people, p = probability of success
-# to get error bars we divide by the total nr of people which has no error so we do sqrt(np(1-p)) / n = sqrt(p(1-p)) / sqrt(n)
-# this is what I found people do: https://www2.sjsu.edu/faculty/gerstman/StatPrimer/conf-prop.htm#:~:text=The%20standard%20error%20of%20a,in%20the%20population%20proportion%2C%20p.
 df_counts_carriers_binding['stderror_carriers_binding'] = np.sqrt(df_counts_carriers_binding['prop_carriers_binding'] * (1 - df_counts_carriers_binding['prop_carriers_binding'])) / np.sqrt(df_counts_carriers_binding['n_all_binding']) 
 df_counts_carriers_binding['stderror_carriers_nonbinding'] = np.sqrt(df_counts_carriers_binding['prop_carriers_nonbinding'] * (1 - df_counts_carriers_binding['prop_carriers_nonbinding'])) / np.sqrt(df_counts_carriers_binding['n_all_nonbinding']) 
 
@@ -788,9 +785,6 @@ df_counts_carriers_binding2['n_all_binding'] = pd.to_numeric(df_counts_carriers_
 df_counts_carriers_binding2['n_all_nonbinding'] = pd.to_numeric(df_counts_carriers_binding2['n_all_nonbinding'])
 
 # ERROR BARS
-# the idea is that we have a binomial process so the variance is n * p * (1-p) where n = nr people, p = probability of success
-# to get error bars we divide by the total nr of people which has no error so we do sqrt(np(1-p)) / n = sqrt(p(1-p)) / sqrt(n)
-# this is what I found people do: https://www2.sjsu.edu/faculty/gerstman/StatPrimer/conf-prop.htm#:~:text=The%20standard%20error%20of%20a,in%20the%20population%20proportion%2C%20p.
 df_counts_carriers_binding2['stderror_carriers_binding'] = np.sqrt(df_counts_carriers_binding2['prop_carriers_binding'] * (1 - df_counts_carriers_binding2['prop_carriers_binding'])) / np.sqrt(df_counts_carriers_binding2['n_all_binding']) 
 df_counts_carriers_binding2['stderror_carriers_nonbinding'] = np.sqrt(df_counts_carriers_binding2['prop_carriers_nonbinding'] * (1 - df_counts_carriers_binding2['prop_carriers_nonbinding'])) / np.sqrt(df_counts_carriers_binding2['n_all_nonbinding']) 
 
@@ -799,7 +793,7 @@ df_counts_carriers_binding2['stderror_carriers_nonbinding'] = np.sqrt(df_counts_
 df_counts_carriers_binding2_melted = pd.melt(df_counts_carriers_binding2, id_vars = 'gene_var')
 df_counts_carriers_binding2_melted[['param', 'status', 'group']] = df_counts_carriers_binding2_melted.variable.str.split('_', expand = True)
 
-# format gene var name to something nicer
+# format gene var name 
 df_counts_carriers_binding2_melted['gene_var2'] = df_counts_carriers_binding2_melted['gene_var'].str.replace('_', '\n')
 
 # subset dataframe to only have counts or percentages 
@@ -912,7 +906,7 @@ else:
 ### ABSOLUTE BINDING (STRONG / WEAK / NON-BINDING)
 
 # CREATE EMPTY DF
-# create a new dataframe where you will store counts of carriers in top and bottom binding groups
+# create a new dataframe 
 df_counts_carriers_binding3 = pd.DataFrame()
 
 # loop for all variants
