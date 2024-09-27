@@ -20,8 +20,8 @@ SCRIPTS
 4. Obtain summary dataframes (choose best variant-MHC combination)
 5. Obtain dataframe with MHC genotype and CH status for UKB participants
 6. Add MHC binding scores to each participant examined
-7a. Generate main figures (1-5), supplementary figures (1, 2, 4, 5, 7, 9, 10-13 (run with PRIME predictions), 18, 19)
-7b. Generate supplementary figures 14-17
+7. (A) Generate main figures (1-5), supplementary figures (1, 2, 4, 5, 7, 9, 10-13 (run with PRIME predictions), 18, 19)
+7. (B) Generate supplementary figures 14-17
 8. Generate supplementary figure 6
 9. Run and analyse power simulations (supplementary figures 3 and 8) 
 
